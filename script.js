@@ -2,15 +2,17 @@
 
 //头部商品清单缩列图滚动显示
 const images = [
-    { src: 'source/耙耙柑清单.jpg', alt: '耙耙柑清单' },
-    { src: 'source/耙耙柑价格清单.jpg', alt: '耙耙柑价格清单' },
+    // { src: 'source/耙耙柑清单.jpg', alt: '耙耙柑清单' },
+    // { src: 'source/耙耙柑价格清单.jpg', alt: '耙耙柑价格清单' },
+    { src: 'source/金煌芒晚橙清单.jpg', alt: '金煌芒晚橙清单' },
     { src: 'source/花生清单.jpg', alt: '花生清单' },
     { src: 'source/漳浦肉丸清单.jpg', alt: '漳浦肉丸清单' },
     { src: 'source/推荐礼.png', alt: '推荐礼' }
     // 添加更多图片
 ];
 // 动态生成下拉选项（可选优化） 
-const categories = ['all', '耙耙柑', '花生', '漳浦肉丸']; // 商品分类数组
+// const categories = ['all', '耙耙柑', '花生', '漳浦肉丸']; // 商品分类数组
+const categories = ['all', '伦晚脐橙', '金煌芒', '花生', '漳浦肉丸']; // 商品分类数组
 // 模拟商品数据，存储在localStorage中
 let products = JSON.parse(localStorage.getItem("products")) || [
     // { id: 1, name: "白晒花生", price: 55, image: "source/白晒花生.png", category: "花生", description: "新鲜晒制的白晒花生，口感香脆，营养丰富。" },
@@ -40,7 +42,7 @@ let products = JSON.parse(localStorage.getItem("products")) || [
     //    七彩花生	5斤115包邮
     //    A➕七彩花生	5斤130包邮
     //花生
-    { id: 1, name: "五香花生 5斤包邮", price: 48, image: "source/五香花生.png", category: "花生", description: "香辣可口，下酒佳品。" },
+    { id: 1, name: "五香花生 5斤包邮", price: 48, image: "source/五香花生.png", category: "花生", description: "美味可口，下酒佳品。" },
     { id: 2, name: "红泥花生 5斤包邮", price: 60, image: "source/红泥花生.png", category: "花生", description: "口感醇厚，富含蛋白质。" },
     { id: 3, name: "蒜香花生 5斤包邮", price: 58, image: "source/蒜香花生.png", category: "花生", description: "蒜香味浓郁，营养丰富。" },
     { id: 4, name: "核桃花生 5斤包邮", price: 58, image: "source/核桃花生.png", category: "花生", description: "口感独特，香气扑鼻。" },
@@ -57,18 +59,33 @@ let products = JSON.parse(localStorage.getItem("products")) || [
     { id: 15, name: "七彩花生 5斤包邮", price: 115, image: "source/七彩花生.png", category: "花生", description: "多种颜色，营养均衡。" },
     { id: 16, name: "A➕七彩花生 5斤包邮", price: 130, image: "source/A➕七彩花生.png", category: "花生", description: "升级版七彩花生，更美味。" },
 
-    // 耙耙柑  
-    { id: 101, name: "耙耙柑中果 5斤包邮", price: 31, image: "source/耙耙柑.png", category: "耙耙柑", description: "中等大小的耙耙柑，果径70-80mm，甜度适中，口感多汁，5斤装包邮。" },
-    { id: 102, name: "耙耙柑大果 5斤包邮", price: 33, image: "source/耙耙柑.png", category: "耙耙柑", description: "较大果径的耙耙柑，果径80-90mm，甜度较高，口感多汁，5斤装包邮。" },
-    { id: 103, name: "耙耙柑果王 5斤包邮", price: 34, image: "source/耙耙柑.png", category: "耙耙柑", description: "顶级果王耙耙柑，果径90mm以上，甜度极高，口感多汁，5斤装包邮。" },
-    { id: 104, name: "耙耙柑中果 8斤包邮", price: 51, image: "source/耙耙柑.png", category: "耙耙柑", description: "中等大小的耙耙柑，果径70-80mm，甜度适中，口感多汁，8斤装包邮。" },
-    { id: 105, name: "耙耙柑大果 8斤包邮", price: 53, image: "source/耙耙柑.png", category: "耙耙柑", description: "较大果径的耙耙柑，果径80-90mm，甜度较高，口感多汁，8斤装包邮。" },
-    { id: 106, name: "耙耙柑果王 8斤包邮", price: 55, image: "source/耙耙柑.png", category: "耙耙柑", description: "顶级果王耙耙柑，果径90mm以上，甜度极高，口感多汁，8斤装包邮。" },
-    { id: 107, name: "耙耙柑花皮果 8斤包邮", price: 38, image: "source/耙耙柑.png", category: "耙耙柑", description: "花皮耙耙柑，果皮带有美丽花纹，果径适中，甜度适中，口感多汁，8斤装包邮。" },
-    { id: 108, name: "耙耙柑礼盒装", price: 68, image: "source/耙耙柑.png", category: "耙耙柑", description: "礼盒装耙耙柑，果径约90mm，甜度极高，口感多汁，8斤装精美礼盒包装，包邮。" },
+    // // 耙耙柑  
+    // { id: 101, name: "耙耙柑中果 5斤包邮", price: 31, image: "source/耙耙柑.png", category: "耙耙柑", description: "中等大小的耙耙柑，果径70-80mm，甜度适中，口感多汁，5斤装包邮。" },
+    // { id: 102, name: "耙耙柑大果 5斤包邮", price: 33, image: "source/耙耙柑.png", category: "耙耙柑", description: "较大果径的耙耙柑，果径80-90mm，甜度较高，口感多汁，5斤装包邮。" },
+    // { id: 103, name: "耙耙柑果王 5斤包邮", price: 34, image: "source/耙耙柑.png", category: "耙耙柑", description: "顶级果王耙耙柑，果径90mm以上，甜度极高，口感多汁，5斤装包邮。" },
+    // { id: 104, name: "耙耙柑中果 8斤包邮", price: 51, image: "source/耙耙柑.png", category: "耙耙柑", description: "中等大小的耙耙柑，果径70-80mm，甜度适中，口感多汁，8斤装包邮。" },
+    // { id: 105, name: "耙耙柑大果 8斤包邮", price: 53, image: "source/耙耙柑.png", category: "耙耙柑", description: "较大果径的耙耙柑，果径80-90mm，甜度较高，口感多汁，8斤装包邮。" },
+    // { id: 106, name: "耙耙柑果王 8斤包邮", price: 55, image: "source/耙耙柑.png", category: "耙耙柑", description: "顶级果王耙耙柑，果径90mm以上，甜度极高，口感多汁，8斤装包邮。" },
+    // { id: 107, name: "耙耙柑花皮果 8斤包邮", price: 38, image: "source/耙耙柑.png", category: "耙耙柑", description: "花皮耙耙柑，果皮带有美丽花纹，果径适中，甜度适中，口感多汁，8斤装包邮。" },
+    // { id: 108, name: "耙耙柑礼盒装", price: 68, image: "source/耙耙柑.png", category: "耙耙柑", description: "礼盒装耙耙柑，果径约90mm，甜度极高，口感多汁，8斤装精美礼盒包装，包邮。" },
 
     //漳浦肉丸
     { id: 208, name: "漳浦肉丸 5斤包邮", price: 115, image: "source/漳浦肉丸.jpg", category: "漳浦肉丸", description: "Q弹爆汁：咬一口，肉汁四溢，幸福感爆棚！。" },
+     // 金煌芒  
+     { id: 301, name: "金煌芒小果 5斤包邮", price: 38, image: "source/海南金煌芒32.jpg", category: "金煌芒", description: "" },
+     { id: 302, name: "金煌芒中果 5斤包邮", price: 35, image: "source/海南金煌芒32.jpg", category: "金煌芒", description: "" },
+     { id: 303, name: "金煌芒大果 5斤包邮", price: 37, image: "source/海南金煌芒31.jpg", category: "金煌芒", description: "" },
+     { id: 304, name: "金煌芒小果 8斤包邮", price: 55, image: "source/海南金煌芒32.jpg", category: "金煌芒", description: "" },
+     { id: 305, name: "金煌芒中果 8斤包邮", price: 57, image: "source/海南金煌芒32.jpg", category: "金煌芒", description: "" },
+     { id: 306, name: "金煌芒大果 8斤包邮", price: 59, image: "source/海南金煌芒31.jpg", category: "金煌芒", description: "" },
+     { id: 307, name: "金煌芒花皮果 8斤包邮", price: 45, image: "source/海南金煌芒32.jpg", category: "金煌芒", description: "" },
+  // 伦晚脐橙  
+  { id: 401, name: "伦晚脐橙小果 5斤包邮", price: 30, image: "source/晚橙37.jpg", category: "伦晚脐橙", description: "" },
+  { id: 402, name: "伦晚脐橙中果 5斤包邮", price: 33, image: "source/晚橙37.jpg", category: "伦晚脐橙", description: "" },
+  { id: 403, name: "伦晚脐橙大果 5斤包邮", price: 35, image: "source/晚橙38.jpg", category: "伦晚脐橙", description: "" },
+  { id: 404, name: "伦晚脐橙小果 9斤包邮", price: 53, image: "source/晚橙39.jpg", category: "伦晚脐橙", description: "" },
+  { id: 405, name: "伦晚脐橙中果 9斤包邮", price: 59, image: "source/晚橙39.jpg", category: "伦晚脐橙", description: "" },
+  { id: 406, name: "伦晚脐橙大果 9斤包邮", price: 62, image: "source/晚橙38.jpg", category: "伦晚脐橙", description: "" }, 
 
 ];
 
